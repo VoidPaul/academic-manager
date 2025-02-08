@@ -5,7 +5,7 @@ import morgan from "morgan"
 
 import { dbConnection } from "./mongo.js"
 //import authRoutes from "../src/auth/auth.routes.js"
-//import apiLimiter from "../src/middlewares/validate-petition-amount.js"
+import apiLimiter from "../src/middlewares/rate-limit.js"
 
 const middlewares = (app) => {
   app.use(express.urlencoded({ extended: false }))
@@ -13,7 +13,7 @@ const middlewares = (app) => {
   app.use(cors())
   app.use(helmet())
   app.use(morgan("dev"))
-  //app.use(apiLimiter)
+  app.use(apiLimiter)
 }
 
 const routes = (app) => {}
