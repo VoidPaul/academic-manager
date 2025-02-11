@@ -4,7 +4,7 @@ import helmet from "helmet"
 import morgan from "morgan"
 
 import { dbConnection } from "./mongo.js"
-//import authRoutes from "../src/auth/auth.routes.js"
+import authRoutes from "../src/auth/auth.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit.js"
 
 const middlewares = (app) => {
@@ -16,7 +16,9 @@ const middlewares = (app) => {
   app.use(apiLimiter)
 }
 
-const routes = (app) => {}
+const routes = (app) => {
+  app.use("/academic-manager/v1/auth", authRoutes)
+}
 
 const connectDB = async () => {
   try {
