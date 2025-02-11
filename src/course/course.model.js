@@ -4,6 +4,7 @@ const courseSchema = Schema({
   name: {
     type: String,
     required: [true, "Course name is required."],
+    unique: true,
   },
   description: String,
   teacher: {
